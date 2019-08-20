@@ -20,4 +20,12 @@ from django.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/cars/', include('cars.urls')),
+
+    #Підключаємо стандартну Rest Auth (тепер у нас є HTML form (login/logout) )
+    path('api/v1/base-auth/', include('rest_framework.urls')),
+    #Підключаємо бібліотеку Djoser, що має механізм створення юзераб скидання паролю....
+    path('api/v1/auth/', include('djoser.urls')),
+    # Підключаємо можливість ауторизуватися по токену
+    path('api/v1/auth_token/', include('djoser.urls.authtoken')),
+
 ]
